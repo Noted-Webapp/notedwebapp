@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { Link } from 'preact-router/match';
-import Note from '../notebutton';
+import Note from '../notebutton/NoteButton';
 import style from './style.css';
 
 /**
