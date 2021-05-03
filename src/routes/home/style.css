@@ -1,5 +1,7 @@
 .home {
-	padding: 56px 20px;
-	min-height: 100%;
+	padding-top: 56px;
+	/* padding: 56px 20px; */
+	height: 100%;
 	width: 100%;
+	overflow: hidden;
 }

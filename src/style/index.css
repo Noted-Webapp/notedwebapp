@@ -1,13 +1,30 @@
+:root {
+	--col-bg-0: #ffffff;
+	--col-bg-1: #fafafa;
+	--col-bg-2: #e6e6e6;
+	--col-bg-3: #bebebe;
+
+	--col-fg-1: #444;
+	--col-fg-dark: #444;
+	--col-fg-light: rgb(238, 238, 238);
+
+	--col-acc-0: #dcccf8;
+	--col-acc-1: #cdb6f5;
+	--col-acc-2: #b189f7;
+	--col-acc-3: #8c5edb;
+	--col-acc-4: #5e33a8;
+}
+
 html,
 body {
 	height: 100%;
 	width: 100%;
 	padding: 0;
 	margin: 0;
-	background: #fafafa;
+	background: var(--col-bg-1);
 	font-family: 'Helvetica Neue', 'Roboto', arial, sans-serif;
 	font-weight: 400;
-	color: #444;
+	color: var(--col-fg-1);
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }

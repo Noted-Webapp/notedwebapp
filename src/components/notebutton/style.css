@@ -1,0 +1,39 @@
+.note {
+	padding: 1em 1em 1em 1em;
+	height: calc(3em);
+	width: 15em;
+	/* border-bottom: 2mm solid var(--col-acc-3); */
+	border-bottom: 2mm solid;
+	border-image: linear-gradient(
+			to right,
+			#bcbcbc 0%,
+			#bcbcbc 25%,
+			#ffcd02 25%,
+			#ffcd02 50%,
+			#e84f47 50%,
+			#e84f47 75%,
+			#65c1ac 75%,
+			#65c1ac 100%
+		)
+		5;
+
+	line-height: 1em;
+	vertical-align: middle;
+}
+
+.note::after {
+	content: '';
+	display: block;
+	position: relative;
+	top: calc(-2em);
+	left: -1em;
+	background: rgba(0, 0, 0, 0.2);
+	clip-path: circle(0%);
+	height: 3em;
+	transition: clip-path 0.3s;
+	width: calc(15em);
+}
+
+.note:hover::after {
+	clip-path: circle(75%);
+}
