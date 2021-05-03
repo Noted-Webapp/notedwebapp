@@ -1,0 +1,14 @@
+{
+	"compilerOptions": {
+		"noEmit": true,
+		"allowJs": true,
+		"checkJs": true,
+		"target": "ESNext",
+		"moduleResolution": "Node",
+		"lib": ["ESNext", "DOM"],
+		"downlevelIteration": true,
+		"jsx": "preserve",
+		"resolveJsonModule": true,
+		"allowSyntheticDefaultImports": true
+	}
+}

@@ -3,5 +3,5 @@ type TagDef = { color: string };
 
 export type NoteData = {
 	tags: Record<string, TagDef>;
-	notes: Note[];
+	notes: Record<string, Note>;
 };
