@@ -21,7 +21,7 @@ console.log(getGradientFromColorList);
 
 /**
  *
- * @param {{data:import('../../types/Note').Note,notes:import('../../types/Note').NoteData}} params
+ * @param {{data:import('../../types/Note').Note,notes:import('../../types/Note').NoteData,id:string}} params
  */
 const Note = ({ data, notes, id }) => {
 	const tagColors = data.tags.map((x) => notes.tags[x].color);

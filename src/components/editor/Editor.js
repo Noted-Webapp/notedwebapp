@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import Router from 'preact-router';
 import { Link } from 'preact-router/match';
-import NoteView from '../noteview/NoteVIew';
+import NoteView from '../noteview/NoteView';
 import style from './style.css';
 
 /**
@@ -11,7 +11,7 @@ import style from './style.css';
 const Editor = ({ data }) => (
 	<div class={style.editor}>
 		<Router>
-			<NoteView path="/notes/:note" data={data} />
+			<NoteView path="/notes/:id" data={data} />
 		</Router>
 	</div>
 );
