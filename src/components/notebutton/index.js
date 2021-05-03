@@ -17,24 +17,23 @@ const getGradientFromColorList = (colors) =>
 		)
 		.join(', ')}) 1`;
 
-`#bcbcbc 0%,#bcbcbc 25%,#ffcd02 25%,#ffcd02 50%,#e84f47 50%,#e84f47 75%,#65c1ac 75%,#65c1ac 100%`;
-
 console.log(getGradientFromColorList);
 
 /**
  *
  * @param {{data:import('../../types/Note').Note,notes:import('../../types/Note').NoteData}} params
  */
-const Note = ({ data, notes }) => {
+const Note = ({ data, notes, id }) => {
 	const tagColors = data.tags.map((x) => notes.tags[x].color);
 	console.log(tagColors);
 	return (
-		<div
+		<Link
 			class={style.note}
 			style={{ borderImage: getGradientFromColorList(tagColors) }}
+			href={'/notes/' + id}
 		>
 			{data.name}
-		</div>
+		</Link>
 	);
 };
 

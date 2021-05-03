@@ -11,8 +11,8 @@ const NoteList = ({ data }) => {
 	console.log(data);
 	return (
 		<div class={style.notelist}>
-			{data.notes.map((x) => (
-				<Note data={x} notes={data}></Note>
+			{Object.entries(data.notes).map(([k, x]) => (
+				<Note data={x} notes={data} id={k}></Note>
 			))}
 		</div>
 	);

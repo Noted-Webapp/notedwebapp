@@ -13,18 +13,18 @@ const NoteData = {
 			color: '#303030',
 		},
 	},
-	notes: [
-		{
+	notes: {
+		['0'.repeat(32)]: {
 			name: "Toto's First Note",
 			content: '# Hello\nThis is my first Noted note.',
 			tags: ['General'],
 		},
-		{
+		['test']: {
 			name: "Toto's Special",
 			content: '# Hello\nThis is another Noted note meant for code.',
 			tags: ['JavaScript', 'CSS', 'HTML'],
 		},
-	],
+	},
 };
 
 const Home = () => (

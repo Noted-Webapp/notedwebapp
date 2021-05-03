@@ -11,7 +11,9 @@ const App = () => (
 	<div id="app">
 		<Header />
 		<Router>
-			<Home path="/" />
+			<Home path="/" note="00000000000000000000000000000000" />
+			<Home path="/notes/" note="00000000000000000000000000000000" />
+			<Home path="/notes/:note" />
 			<Settings path="/settings/" />
 		</Router>
 	</div>
