@@ -1,4 +1,7 @@
-# noted
+# Noted
+
+A simple notes app with tags and hopefully a search.
+Will use markdown and will only display currently edited line in plain text.
 
 ## CLI Commands
 
