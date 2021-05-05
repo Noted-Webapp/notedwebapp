@@ -3,7 +3,8 @@ import Editor from '../../components/editor/Editor';
 import NoteList from '../../components/notelist/NoteList';
 import style from './style.css';
 import programtags from '../../assets/data/programmingtags.json';
-/** @type {import('../../types/Note').NoteData} */ const NoteData = {
+import { randomToken } from '../../utils/random';
+const baseNoteData = {
     tags: {
         ...programtags,
         General: {
@@ -11,14 +12,14 @@ import programtags from '../../assets/data/programmingtags.json';
         }
     },
     notes: {
-        ['0'.repeat(32)]: {
-            content: "# Toto's First Note\n## Hello\n### Hello\n#### Hello\nThis is my first Noted note.",
+        [randomToken()]: {
+            content: `\n# Welcome\nWelcome to Noted.\nThis notes app utilizes markdown and will allow plugins in the future.\n`,
             tags: [
                 'General'
             ]
         },
-        ['test']: {
-            content: "# Toto's Special\nThis is another Noted note meant for code.",
+        [randomToken()]: {
+            content: `\n# Welcome: Code\nThis note serves as a tutorial for the programming aspects of Noted.\n\`\`\`js\nconsole.log("hello");\n\`\`\`\n`,
             tags: [
                 'JavaScript',
                 'CSS',
@@ -30,7 +31,9 @@ import programtags from '../../assets/data/programmingtags.json';
 let Home = class Home extends Component {
     constructor(){
         super();
-        this.setState(NoteData);
+        this.setState(JSON.parse(localStorage.notes ?? JSON.stringify(baseNoteData)), ()=>{
+            localStorage.notes = JSON.stringify(this.state);
+        });
     }
     updateNote(noteID, newData) {
         this.setState({
@@ -38,9 +41,12 @@ let Home = class Home extends Component {
                 ...this.state.notes,
                 [noteID]: newData
             }
+        }, ()=>{
+            localStorage.notes = JSON.stringify(this.state);
         });
     }
     render() {
+        console.log(this.state);
         return( /*#__PURE__*/ h("div", {
             class: style.home
         }, /*#__PURE__*/ h(NoteList, {
