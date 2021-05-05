@@ -1,4 +1,4 @@
-export type Note = { tags: string[]; content: string };
+export type Note = { content: string; modified: number };
 type TagDef = { color: string };
 
 export type NoteData = {

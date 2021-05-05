@@ -40,3 +40,7 @@
 .note:hover::after {
 	clip-path: circle(75%);
 }
+
+.note.selected::after {
+	clip-path: circle(75%);
+}

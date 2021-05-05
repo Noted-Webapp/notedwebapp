@@ -3,73 +3,46 @@ import Editor from '../../components/editor/Editor';
 import NoteList from '../../components/notelist/NoteList';
 import style from './style.css';
 
-import programtags from '../../assets/data/programmingtags.json';
-import { Note, NoteData as baseNoteData, NoteData } from '../../types/Note';
-import { randomToken } from '../../utils/random';
+import { Note, NoteData } from '../../types/Note';
+import { Link } from 'preact-router';
 
-const baseNoteData: NoteData = {
-	tags: {
-		...programtags,
-		General: {
-			color: '#303030',
-		},
+class Home extends Component<
+	{
+		note?: string;
+		updateNote: (id: string, data: Note) => void;
+		data: NoteData;
+		path?: string;
 	},
-	notes: {
-		[randomToken()]: {
-			content: `
-# Welcome
-Welcome to Noted.
-This notes app utilizes markdown and will allow plugins in the future.
-`,
-			tags: ['General'],
-		},
-		[randomToken()]: {
-			content: `
-# Welcome: Code
-This note serves as a tutorial for the programming aspects of Noted.
-\`\`\`js
-console.log("hello");
-\`\`\`
-`,
-			tags: ['JavaScript', 'CSS', 'HTML'],
-		},
-	},
-};
+	{}
+> {
+	render({
+		note,
+		updateNote,
+		data,
+	}: {
+		note: string;
+		updateNote: (id: string, data: Note) => void;
+		data: NoteData;
+		path?: string;
+	}) {
+		if (!(note in data.notes) && note != '00000000000000000000000000000000')
+			return (
+				<div class={style.home}>
+					<Link href="/notes/">
+						Encountered an error (Deleted Note?); Please click to return to
+						notes menu.
+					</Link>
+				</div>
+			);
 
-class Home extends Component<{}, baseNoteData> {
-	constructor() {
-		super();
-		this.setState(
-			JSON.parse(localStorage.notes ?? JSON.stringify(baseNoteData)),
-			() => {
-				localStorage.notes = JSON.stringify(this.state);
-			}
-		);
-	}
-
-	updateNote(noteID: string, newData: Note) {
-		this.setState(
-			{
-				notes: {
-					...this.state.notes,
-					[noteID]: newData,
-				},
-			},
-			() => {
-				localStorage.notes = JSON.stringify(this.state);
-			}
-		);
-	}
-
-	render() {
-		console.log(this.state);
 		return (
 			<div class={style.home}>
-				<NoteList data={this.state}></NoteList>
-				<Editor
-					updateNote={this.updateNote.bind(this)}
-					data={this.state}
-				></Editor>
+				<NoteList
+					updateNote={updateNote}
+					selected={note}
+					data={data}
+				></NoteList>
+				<Editor updateNote={updateNote} data={data}></Editor>
 			</div>
 		);
 	}
