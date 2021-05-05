@@ -1,0 +1,22 @@
+{
+	"runOnSave.statusMessageTimeout": 3000,
+	"runOnSave.commands": [
+		{
+			// Match scss files except names start with `_`.
+			"match": ".*\\.tsx$",
+			"notMatch": "node_modules/\\.tsx$",
+			"command": "npx swc ${file} -C jsc.target=es2020 -o ${fileDirname}/${fileBasenameNoExtension}.js",
+			"runIn": "backend",
+			"runningStatusMessage": "Compiling ${fileBasename}",
+			"finishStatusMessage": "${fileBasename} compiled"
+		}
+	],
+	"files.exclude": {
+		"**/.git": true,
+		"**/.svn": true,
+		"**/.hg": true,
+		"**/CVS": true,
+		"**/.DS_Store": true,
+		"**/*.js": false
+	}
+}

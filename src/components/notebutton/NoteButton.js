@@ -17,7 +17,7 @@ const getGradientFromColorList = (colors) =>
 		)
 		.join(', ')}) 1`;
 
-console.log(getGradientFromColorList);
+const r = /^(?:# )(.+)$/m;
 
 /**
  *
@@ -25,14 +25,14 @@ console.log(getGradientFromColorList);
  */
 const Note = ({ data, notes, id }) => {
 	const tagColors = data.tags.map((x) => notes.tags[x].color);
-	console.log(tagColors);
+	console.log(data.content);
 	return (
 		<Link
 			class={style.note}
 			style={{ borderImage: getGradientFromColorList(tagColors) }}
 			href={'/notes/' + id}
 		>
-			{data.name}
+			{data.content.match(r)[1]}
 		</Link>
 	);
 };

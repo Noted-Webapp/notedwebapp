@@ -1,19 +1,14 @@
 import { h } from 'preact';
 import Router from 'preact-router';
-import { Link } from 'preact-router/match';
 import NoteView from '../noteview/NoteView';
 import style from './style.css';
-
-/**
- *
- * @param {{data:import('../../types/Note').NoteData}} params
- */
-const Editor = ({ data }) => (
-	<div class={style.editor}>
-		<Router>
-			<NoteView path="/notes/:id" data={data} />
-		</Router>
-	</div>
-);
-
+const Editor = ({ data , updateNote  })=>/*#__PURE__*/ h("div", {
+        class: style.editor
+    }, /*#__PURE__*/ h(Router, null, /*#__PURE__*/ h(NoteView, {
+        updateNote: updateNote,
+        path: "/notes/:id",
+        data: data
+    })))
+;
 export default Editor;
+
